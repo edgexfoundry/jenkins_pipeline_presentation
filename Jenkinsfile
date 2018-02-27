@@ -1,5 +1,7 @@
 node {
-  sh 'echo Hello World!'
+  writeFile file: 'testFile.txt', text: 'Hello World!'
+  def fileResults = readFile file: 'testFile.txt'
+  echo fileResults
 }
 
 
