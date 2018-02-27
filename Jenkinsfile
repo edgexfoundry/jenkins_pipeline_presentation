@@ -1,5 +1,8 @@
-node('centos7-docker-4c-4g') {
-  echo "Hello World!  I am running on ${env.NODE_NAME}"
+node('centos7-docker-4c-2g') {
+  withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'WORLD', usernameVariable: 'HELLO')]){
+    echo "${env.HELLO} ${env.WORLD}"
+    sh "env"
+  }
 }
 
 
