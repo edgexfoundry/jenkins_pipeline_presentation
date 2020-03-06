@@ -37,6 +37,8 @@
     * [Building the final image](#building-the-final-image)
     * [Build base image Dockerfile.build](#build-base-image-dockerfilebuild)
     * [Build final docker image](#build-final-docker-image)
+  * [Deployment On Sandbox](#Deployment-On-Sandbox)
+    * [Implementation](#Implementation)
 
 ## Authors
 
@@ -44,6 +46,7 @@
 * Lisa Rashidi-Ranjbar
 * James Gregg
 * Emilio Reyes
+* Venkata Lakshmi Dhatri Penna
 
 ## Background
 
@@ -271,3 +274,42 @@ ENTRYPOINT ["/go-binary"]
 ### Build final docker image
 
 `docker build -t docker-edgex-binary -f Dockerfile --build-arg BASE=base-build .`
+
+## Deployment On Sandbox
+
+The official site for Sandbox environment is **[https://jenkins.edgexfoundry.org/sandbox/](https://jenkins.edgexfoundry.org/sandbox/)**
+
+#### Get Access To Sandbox
+
+The official process to request for access to sandbox is provided in the link **[Here](https://lf-releng-docs.readthedocs.io/en/latest/jenkins-sandbox.html#get-access-to-the-jenkins-sandbox)**
+
+If you already have the LFID and can access the Prod Environment you can use the same LFID to access the Sandbox, but before each other must request the access to sandbox by creating an LF ticket at **[LFServicedesk](https://jira.linuxfoundation.org/servicedesk/customer/portals)**
+
+#### Implementation
+
+Once you create a new Jenkinsfile, In your Github repository, your Jenkinsfile name should be Jenkinsfile.sandbox. The Jenkins sandbox will execute only the Jenkinsfile.sandbox file.
+
+#### Configurations on Jenkins UI
+
+For the EdgeX Foundry Project Org all the configurations such as Credentials to access the github repos were already provided. Once you add Jenkinsfile.sandbox to the repository, Now you scan the organization on Jenkins UI to execute the jobs.
+
+![edgexjenkinsorg.png](images/edgexjenkinsorg.PNG)
+
+The Jenkins pipeline job will automatically discover the branches and pull requests for the repository.
+
+#### Things to remember
+
+* All the Jobs on Jenkins sandbox are automatically deleted every Saturday at 08:00 UTC
+* Project configuration files and credentials are not loaded into the system
+* Jenkins nodes have the same OpenStack configuration as the production instance.
+
+#### Create a Pipeline Job on Sanbox
+Since all the Jobs on sandbox are deleted on every saturday and IF you don't see the EdgexFoundry Org on Sandbox UI, you have to create pipeline.
+
+1.  To Create a pipeline under the Pipeline-job view create `New Item`.
+2.  Provide a job name such as EdgexFoundry and select the `Github Orgaization` and click `OK`.
+3.  Under `General` tab you can Provide the description and display name. Under `Project` select the `credentials` edgex-jenkins which uses the edgex-jenkins github personal access token.
+   Provide the `Owner` as EdgeXFoundry and `Script Path` as Jenkinsfile.sandbox
+4.  Click on `Save` and `Apply`
+ 
+Now click on scan Repository. Once the scanning is done you should be able to Edgex Foundry project under the view and all the repositories which has Jenkinsfile.sandbox with in it.
