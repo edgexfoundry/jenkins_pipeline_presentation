@@ -285,7 +285,7 @@ The official process to request for access to sandbox is provided in the link **
 
 If you already have the LFID and can access the Prod Environment you can use the same LFID to access the Sandbox, but before each other must request the access to sandbox by creating an LF ticket at **[LFServicedesk](https://jira.linuxfoundation.org/servicedesk/customer/portals)**
 
-#### Implementation
+### Implementation
 
 Once you create a new Jenkinsfile, In your Github repository, your Jenkinsfile name should be Jenkinsfile.sandbox. The Jenkins sandbox will execute only the Jenkinsfile.sandbox file.
 
@@ -293,7 +293,7 @@ Once you create a new Jenkinsfile, In your Github repository, your Jenkinsfile n
 
 For the EdgeX Foundry Project Org all the configurations such as Credentials to access the github repos were already provided. Once you add Jenkinsfile.sandbox to the repository, Now you scan the organization on Jenkins UI to execute the jobs.
 
-![edgexjenkinsorg.png](images/edgexjenkinsorg.PNG)
+![edgexjenkinsorg.png](images/edgexjenkinsorg.png)
 
 The Jenkins pipeline job will automatically discover the branches and pull requests for the repository.
 
@@ -313,3 +313,9 @@ Since all the Jobs on sandbox are deleted on every saturday and IF you don't see
 4.  Click on `Save` and `Apply`
  
 Now click on scan Repository. Once the scanning is done you should be able to Edgex Foundry project under the view and all the repositories which has Jenkinsfile.sandbox with in it.
+
+#### WorkFlow Diagram
+
+The below picture represents the workflow of Deployment process on Sandbox.
+ 
+![workflow.png](images/workflow.png)
