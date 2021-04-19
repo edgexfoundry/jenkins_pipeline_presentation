@@ -1,4 +1,6 @@
 # Geneva Transformation
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr-raw/edgexfoundry/jenkins_pipeline_presentation)](https://github.com/edgexfoundry/jenkins_pipeline_presentation/pulls) [![GitHub Contributors](https://img.shields.io/github/contributors/edgexfoundry/jenkins_pipeline_presentation)](https://github.com/edgexfoundry/jenkins_pipeline_presentation/contributors) [![GitHub Committers](https://img.shields.io/badge/team-committers-green)](https://github.com/orgs/edgexfoundry/teams/devops-core-team/members) [![GitHub Commit Activity](https://img.shields.io/github/commit-activity/m/edgexfoundry/jenkins_pipeline_presentation)](https://github.com/edgexfoundry/jenkins_pipeline_presentation/commits)
+
 
 ## Table of Contents
 
